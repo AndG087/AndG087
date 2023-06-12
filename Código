@@ -10,8 +10,8 @@ led_6=11
 led_7=13
 led_8=19
 led_9=26
-button_1=23
-button_2=24
+button1=23
+button2=24
 
 gpio.setup(button1,gpio.IN,pull_up_down=gpio.PUD_DOWN)
 gpio.setup(button2,gpio.IN,pull_up_down=gpio.PUD_DOWN)
@@ -404,9 +404,8 @@ def conf11():
 
 while True:
   if gpio.input(button1) and gpio.input(button2) == gpio.HIGH:
-    confi3()
+    conf3()
   elif gpio.input(button1) == gpio.HIGH:
     conf7()
   elif gpio.input(button2) == gpio.HIGH:
     conf11()
-   
