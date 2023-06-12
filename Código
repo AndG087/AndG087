@@ -10,8 +10,11 @@ led_6=11
 led_7=13
 led_8=19
 led_9=26
+button_1=23
+button_2=24
 
-
+gpio.setup(button1,gpio.IN,pull_up_down=gpio.PUD_DOWN)
+gpio.setup(button2,gpio.IN,pull_up_down=gpio.PUD_DOWN)
 gpio.setmode(gpio.BCM)
 gpio.setup(led_1,gpio.OUT)
 gpio.setup(led_2, gpio.OUT)
@@ -207,8 +210,6 @@ def conf11():
     gpio.output(led_8, gpio.HIGH)    
     gpio.output(led_9, gpio.HIGH)
     time.sleep(0.5)
-    
-def conf15():
     gpio.output(led_1, gpio.LOW)
     gpio.output(led_2, gpio.LOW)
     gpio.output(led_3, gpio.LOW)
@@ -269,7 +270,6 @@ def conf15():
     gpio.output(led_8, gpio.HIGH)    
     gpio.output(led_9, gpio.HIGH)
     time.sleep(0.5)
-def conf19():
     gpio.output(led_1, gpio.LOW)
     gpio.output(led_2, gpio.LOW)
     gpio.output(led_3, gpio.LOW)
@@ -330,8 +330,6 @@ def conf19():
     gpio.output(led_8, gpio.LOW)    
     gpio.output(led_9, gpio.LOW)
     time.sleep(0.5)
-    
-def conf23():
     gpio.output(led_1, gpio.LOW)
     gpio.output(led_2, gpio.LOW)
     gpio.output(led_3, gpio.LOW)
@@ -405,15 +403,10 @@ def conf23():
     
 
 while True:
-    conf3()
-    time.sleep(1)
+  if gpio.input(button1) and gpio.input(button2) == gpio.HIGH:
+    confi3()
+  elif gpio.input(button1) == gpio.HIGH:
     conf7()
-    time.sleep(1)
+  elif gpio.input(button2) == gpio.HIGH:
     conf11()
-    time.sleep(1)
-    conf15()
-    time.sleep(1)
-    conf19()
-    time.sleep(1)
-    conf23()
-gpio.cleanup()
+   
